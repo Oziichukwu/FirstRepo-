@@ -164,7 +164,3 @@ public class ArrayWork<scores> {
         System.out.println();
     }
 }
-    git reset --hard origin/Java-Repository
-        2
-        00
-
