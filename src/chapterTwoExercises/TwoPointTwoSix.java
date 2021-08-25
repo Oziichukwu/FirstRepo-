@@ -19,7 +19,7 @@ System.out.println("Enter a second number");
 
 	System.out.printf("%d is a multiple of %d", num1, num2);
 
-	if (num2 % num1 !== 0 )
+	if (num2 % num1 != 0 )
 
 	System.out.printf("%d is not a multiple of %d", num1, num2);
 	

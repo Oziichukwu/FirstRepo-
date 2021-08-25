@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class TwoPointTwoEight{
 
 public static void main(String[] args){
-5
+
 Scanner input = new Scanner(System.in);
 
 	int radius;

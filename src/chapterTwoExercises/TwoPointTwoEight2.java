@@ -14,7 +14,7 @@ System.out.println("Enter radius");
 
 
 
-	double area  = Pji * radius * radius;
+	double area  = Pi * radius * radius;
 
 
 
