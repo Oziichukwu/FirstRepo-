@@ -1,38 +1,58 @@
-package chapterThree;
+package chapterThree11;
 
 public class AirConditioner {
 
+    int controller;
 
-    private boolean isOn;
-    private int currentTemperature = 16;
+    boolean isOn;
 
-    public void setOn( boolean isOn) {
+
+
+    public void isOn( boolean isOn ) {
 
         this.isOn = isOn;
     }
 
-    public boolean isOn(){
+    public int getController() {
 
-        return isOn;
+     return controller;
+    }
+
+    public void increaseTemperature( int temperatureValue ) {
+        if ( temperatureValue > 30 ){
+
+            controller = 30;
+        }
+
+        if ( temperatureValue <= 30){
+
+            controller = temperatureValue;
+        }
+
+        if ( temperatureValue >= 16)
+
+            if ( temperatureValue <= 30)
+        controller = temperatureValue + 1;
 
     }
 
-    public void increaseTemperature() {
+    public void decreaseTemperature( int temperatureValue ) {
 
-        if ( currentTemperature < 30)
+        if ( temperatureValue < 16){
 
-        currentTemperature = currentTemperature + 1;
-    }
+            controller = 16;
+        }
 
-    public int getcurrentTemperature() {
+        if ( temperatureValue > 16){
 
-        return currentTemperature;
-    }
+            controller = temperatureValue;
+        }
 
-    public void decreaseTemperature() {
+        if ( temperatureValue >= 16)
 
-        if ( currentTemperature > 16 )
+            if ( temperatureValue <= 30)
+                controller = temperatureValue - 1;
 
-    currentTemperature = currentTemperature - 1;
+
     }
 }

@@ -1,168 +1,126 @@
-package chapterThree;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+ import chapterThree11.AirConditioner;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AirConditionerTest {
 
-
-
     @Test
-    public void AirconditionerCanTurnOnTest(){
-    // given that
-
-    AirConditioner lg = new AirConditioner();
-    assertFalse(false);
+    public void AirConditionerCanTurnOn(){
+        // give that
+        AirConditioner lgAirconditioner = new AirConditioner();
 
         // when
-
-        lg.setOn(true);
+        lgAirconditioner.isOn(true);
 
         // assert that
+
+        int lgController = lgAirconditioner.getController();
+
         assertTrue(true);
 
     }
 
     @Test
-    public void AirConditionalCanturnOff(){
+    public void AirConditionerCanTurnOff(){
 
         // given that
+        AirConditioner lgAirconditioner = new AirConditioner();
 
-        AirConditioner lg = new AirConditioner();
-
-        lg.setOn(true);
+            lgAirconditioner.isOn(false);
 
         // when
 
-        lg.setOn(false);
+            lgAirconditioner.isOn(false);
 
-        // assert that
+        // check that
 
+        int lgController = lgAirconditioner.getController();
         assertFalse(false);
     }
 
     @Test
-    public void AirconditionerCanIncreaseTemperatureTest(){
+     public void AirconditionerCanIncreaseTemperature() {
 
         // given that
 
-        AirConditioner lg = new AirConditioner();
+        AirConditioner lgAirconditioner = new AirConditioner();
 
-        lg.setOn(true);
+        lgAirconditioner.isOn(true);
 
         // when
 
-        lg.increaseTemperature();
+        lgAirconditioner.increaseTemperature(20);
 
-        // assert that
+        // check that
 
-        assertEquals( 17,lg.getcurrentTemperature());
+        int lgController = lgAirconditioner.getController();
+        assertEquals(21, lgController);
 
     }
 
     @Test
-
-    public void AirConditionerCanDecreaseTemperatureTest(){
-
-        // given that
-
-        AirConditioner lg = new AirConditioner();
-
-        lg.setOn(true);
-
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-
-        // when
-
-        lg.decreaseTemperature();
-
-        // assert that
-
-        assertEquals(17, lg.getcurrentTemperature());
-    }
-
-    @Test
-    public void TemperatureCannotGoBeyond30Test(){
+    public void AirConditionerCanDecreaseTemperature(){
 
         // given that
 
-        AirConditioner lg = new AirConditioner();
+        AirConditioner lgAirconditioner = new AirConditioner();
 
-        lg.setOn(true);
+        lgAirconditioner.isOn(true);
+
+        lgAirconditioner.decreaseTemperature(20);
 
         // when
 
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
-        lg.increaseTemperature();
+        lgAirconditioner.decreaseTemperature(20);
 
-         // assert that
+        // check that
 
-        assertEquals(30, lg.getcurrentTemperature());
+        int lgController = lgAirconditioner.getController();
+        assertEquals(19,lgController);
 
     }
 
     @Test
-
-    public void temperatureCannotGoBelow16Test(){
+    public void AirConditionerTemperatureCannotGoBeyondTheMaximun(){
 
         // given that
+        AirConditioner lgAirconditioner = new AirConditioner();
 
-        AirConditioner lg = new AirConditioner();
+        lgAirconditioner.isOn(true);
 
-        lg.setOn(true);
-
-        lg.increaseTemperature();
-        lg.increaseTemperature();
 
         // when
 
-        lg.decreaseTemperature();
-        lg.decreaseTemperature();
-        lg.decreaseTemperature();
-        lg.decreaseTemperature();
-        lg.decreaseTemperature();
+        lgAirconditioner.increaseTemperature(35);
 
-        // assert that
+        // check that
 
-        assertEquals(16, lg.getcurrentTemperature());
+        int lgController = lgAirconditioner.getController();
+        assertEquals(30, lgController);
+
+
     }
+
 
     @Test
-  public void temperatureCannotIncreaseWhenAirConditionerIsOff(){
+    public void AirConditionerTemperatureCannotGoBelowTheMinimum(){
+        //given that
 
-        // given
+        AirConditioner lgAirconditioner = new AirConditioner();
 
-    AirConditioner lg = new AirConditioner();
+        lgAirconditioner.isOn(true);
 
-    lg.setOn(false);
 
-    // when
+        // when
 
-     lg.increaseTemperature();
+        lgAirconditioner.decreaseTemperature(10);
 
-     // assert that
+        // check that
 
-        assertNotEquals(0, lg.getcurrentTemperature());
-
+        int lgController = lgAirconditioner.getController();
+        assertEquals(16, lgController);
 
     }
-
 
 }

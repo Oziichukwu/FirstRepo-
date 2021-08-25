@@ -1,5 +1,7 @@
 package chapterSeven;
 
+import com.sun.jdi.Value;
+
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -109,32 +111,29 @@ public class ArrayWork<scores> {
 
     private static void getHighestAndLowestScoringStudent() {
         System.out.print("=".repeat(40));
-        int maximumForRow = 0;
-        int minimumForRow = 0;
+        int maximumForRow = Integer.MIN_VALUE;
+        int minimumForRow = Integer.MAX_VALUE;
         int indexForrow = 0;
         int indexForColum = 0;
-        for (int i = 0; i < scores[0].length; i++) {
-            maximumForRow += scores[0][i];
-            minimumForRow += scores[0][i];
-        }
         for (int student = 0; student < scores.length; student++) {
             int totalScore = 0;
 
             for (int subject = 0; subject < scores[student].length; subject++) {
 
                 totalScore += scores[student][subject];
+            }
 
-                if (maximumForRow < totalScore) {
+                if (totalScore > maximumForRow) {
 
                     maximumForRow = totalScore;
                     indexForrow = student;
                 }
-                if (minimumForRow > totalScore) {
+                if (totalScore < minimumForRow) {
 
                     minimumForRow = totalScore;
                     indexForColum = student;
                 }
-            }
+
         }
         System.out.println();
         System.out.println("Student " + (indexForrow + 1) + " has the overall highest of  " + maximumForRow);
@@ -145,20 +144,20 @@ public class ArrayWork<scores> {
     }
 
     private static void getHighestAndLowestScoringStudentForEachSubject() {
-        int maximumForColumn = 0;
+        int maximumScoreForEachSubject;
         int index1 = 0;
         int index2 = 0;
         System.out.println("=".repeat(50));
         for (int student = 0; student < numberOfSubjects; student++) {
-            maximumForColumn = scores[0][student];
+            maximumScoreForEachSubject = scores[0][student];
             for (int subject = 0; subject < scores.length; subject++) {
 
-                maximumForColumn = Math.max(maximumForColumn,scores[subject][student]);
-                    index1 = subject;
+                maximumScoreForEachSubject = Math.max(maximumScoreForEachSubject,scores[subject][student]);
+
                     index2 = student;
                 }
-            System.out.println("Student " + (index1 + 1) + " has the highest of " + maximumForColumn  + " in subject " + (index2 + 1));
-
+            index1 = student;
+            System.out.println("Student " + (index1 + 1) + " has the highest of " + maximumScoreForEachSubject  + " in subject " + (index2 + 1));
         }
         System.out.print("=".repeat(50));
         System.out.println();
