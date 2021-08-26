@@ -2,6 +2,7 @@ package chapterSeven;
 
 import com.sun.jdi.Value;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -22,6 +23,7 @@ public class ArrayWork<scores> {
         calculateAverageScore();
         getHighestAndLowestScoringStudent();
         getHighestAndLowestScoringStudentForEachSubject();
+        getRankingForEachStudent();
     }
 
     private static void collectInput() {
@@ -50,7 +52,7 @@ public class ArrayWork<scores> {
     }
 
     private static void displayScoresOfStudents() {
-
+        int totalScore[] = new int[numberOfStudents];
         System.out.print("          ");
         for (int subject = 0; subject < numberOfSubjects; subject++)
             System.out.print("Subject " + (subject + 1) + " ");
@@ -59,40 +61,48 @@ public class ArrayWork<scores> {
         System.out.print("\t Ranking");
         System.out.println("\n" + "-".repeat(120));
         for (int student = 0; student < numberOfStudents; student++) {
-            int totalScore = 0;
+            totalScore[student] = 0;
             double averageScore = 0;
 
             System.out.print("Student " + (student + 1) + "|" + "  ");
             for (int subject = 0; subject < numberOfSubjects; subject++) {
                 System.out.printf("%6d   ", scores[student][subject]);
-                totalScore += scores[student][subject];
-                averageScore = (double) totalScore / numberOfSubjects;
+                totalScore[student] += scores[student][subject];
+                averageScore = (double) totalScore[student] / numberOfSubjects;
             }
-            System.out.printf("%7d", totalScore);
+            int j = 0;
+            int max = totalScore[0];
+            for (j = 0; j < totalScore.length; j++) {
+
+                max = Math.max(max, totalScore[j]);
+                for (int i = 1; i <= totalScore.length; i++)
+                    max = i;
+
+
+            }
+            System.out.printf("%7d", totalScore[student]);
             System.out.printf("%16.2f", averageScore);
-
+            System.out.print("   " + (j + 1));
             System.out.println();
-        }
-        System.out.println();
-    }
 
+
+                System.out.println();
+
+        }
+    }
     private static void calculateTotalScore() {
         System.out.println("=".repeat(40));
 
         for (int student = 0; student < numberOfStudents; student++) {
             int totalScore = 0;
-
             for (int subject = 0; subject < numberOfSubjects; subject++) {
-
                 totalScore += scores[student][subject];
             }
-
             System.out.printf("%s%d%s%d%n", "The total for student ", (student + 1), " is:", totalScore);
         }
         System.out.println("=".repeat(40));
         System.out.println();
     }
-
     private static void calculateAverageScore() {
         System.out.println("=".repeat(40));
         for (int student = 0; student < numberOfStudents; student++) {
@@ -113,8 +123,8 @@ public class ArrayWork<scores> {
         System.out.print("=".repeat(40));
         int maximumForRow = Integer.MIN_VALUE;
         int minimumForRow = Integer.MAX_VALUE;
-        int indexForrow = 0;
-        int indexForColum = 0;
+        int indexForRow = 0;
+        int indexForColumn = 0;
         for (int student = 0; student < scores.length; student++) {
             int totalScore = 0;
 
@@ -122,22 +132,19 @@ public class ArrayWork<scores> {
 
                 totalScore += scores[student][subject];
             }
-
                 if (totalScore > maximumForRow) {
-
                     maximumForRow = totalScore;
-                    indexForrow = student;
+                    indexForRow = student;
                 }
                 if (totalScore < minimumForRow) {
 
                     minimumForRow = totalScore;
-                    indexForColum = student;
+                    indexForColumn = student;
                 }
-
         }
         System.out.println();
-        System.out.println("Student " + (indexForrow + 1) + " has the overall highest of  " + maximumForRow);
-        System.out.println("Student " + (indexForColum + 1) + " has the overall lowest of  " + minimumForRow);
+        System.out.println("Student " + (indexForRow + 1) + " has the overall highest of  " + maximumForRow);
+        System.out.println("Student " + (indexForColumn + 1) + " has the overall lowest of  " + minimumForRow);
         System.out.print("=".repeat(40));
         System.out.println();
         System.out.println();
@@ -162,4 +169,35 @@ public class ArrayWork<scores> {
         System.out.print("=".repeat(50));
         System.out.println();
     }
+
+    private static void getRankingForEachStudent(){
+       // System.out.println("=".repeat(40));
+            int [] totalScore = new int[numberOfStudents];
+        for (int student = 0; student < numberOfStudents; student++) {
+             totalScore[student] = 0;
+            for (int subject = 0; subject < numberOfSubjects; subject++) {
+                totalScore[student] += scores[student][subject];
+            }
+           // System.out.printf("%s%d%s%d%n", "The total for student ", (student + 1), " is:", totalScore);
+        }
+       // System.out.println(Arrays.toString(totalScore));
+
+      //  int num = 0;
+        int max = totalScore[0];
+            for (int j = 0; j < totalScore.length;j++ ) {
+
+                max = Math.max(max, totalScore[j]);
+                for (int i = 1; i <= totalScore.length; i++) {
+                          max = i;
+                }
+                System.out.println("student" + (j+1));
+            }
+
+            //max = i;
+            // System.out.println("=".repeat(40));
+            // System.out.println();
+       // System.out.println(" student" + (num+ 1));
+
+        }
+
 }
