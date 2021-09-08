@@ -7,7 +7,7 @@ public class PersonalityExercise {
     public static void main(String[] args) {
         displayHeaderOfThePersonalityExercise();
         collateAnswersFromTheUser();
-        displayTabulatedUsersResponsesOne();
+        displayTabulatedUsersResponsesOne();git
         collateTheSumOfAllCounts();
     }
 
