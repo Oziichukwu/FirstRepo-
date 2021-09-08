@@ -7,7 +7,7 @@ public class PersonalityExercise {
     public static void main(String[] args) {
         displayHeaderOfThePersonalityExercise();
         collateAnswersFromTheUser();
-        displayTabulatedUsersResponsesOne();git
+        displayTabulatedUsersResponsesOne();
         collateTheSumOfAllCounts();
     }
 
@@ -141,14 +141,12 @@ public class PersonalityExercise {
                 userAnswer[i] = collectAnswers;
         }
     }
-
     private static void displayTabulatedUsersResponses() {
         String display = String.format("%6s%6s%6s", " ", "A", "B");
         System.out.printf(display.repeat(4));
         System.out.println();
         System.out.println("=".repeat(80));
     }
-
     private static void displayTabulatedUsersResponsesOne() {
         displayTabulatedUsersResponses();
         for (int i = 1; i < questions.length; i += 4) {
