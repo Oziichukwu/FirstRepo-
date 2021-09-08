@@ -16,9 +16,10 @@ public class PersonalityExercise {
 
     private static void displayHeaderOfThePersonalityExercise() {
 
-        System.out.println("Welcome to Myers Briggs Personality Exercise");
-        System.out.println("Kindly choose from the list of questions below specific answers that best describe you");
-        System.out.println("Remember to be completely honest as this is a reflection of your personality");
+        System.out.println("""
+        Welcome to Myers Briggs Personality Exercise
+        Kindly choose from the list of questions below specific answers that best describe you
+        Remember to be completely honest as this is a reflection of your personality""");
     }
 
     private static String[] displayFirstSetOfPersonalityQuestions() {
