@@ -153,8 +153,8 @@ public class PersonalityExercise {
             catch (InvalidParameterException e){
                 System.out.println(e);
             }
-            if(!correctInput){
-                i--;
+            if(correctInput == false){
+                i -=1;
             }
         }
     }

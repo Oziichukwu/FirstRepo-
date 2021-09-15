@@ -11,7 +11,7 @@ public class Algorithm {
         int temp = 0;
 
         for (int i = 0; i < sort.length; i++) {
-            for (int j = i+1it ; j < sort.length; j++) {
+            for (int j = i+1 ; j < sort.length; j++) {
 
                 if(sort[j] < sort[i]){
                     temp = sort[i];
