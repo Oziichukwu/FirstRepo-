@@ -17,23 +17,28 @@ public class PrimeNumber {
 
         number = input.nextInt();
 
-        while (counter <= number / 2) {
 
-            if ( number % counter == 0){
+                while (counter <= number / 2) {
+                    if (number == 1) {
+                        System.out.println("Number is not prime");
+                    }
+                    else if (number % counter == 0) {
 
-                sentinel = true;
+                        sentinel = true;
 
-                break;
-            }
-                counter++;
-        }
+                        break;
+                    }
+                    counter++;
+                }
 
-        if (sentinel == false)
-            System.out.printf("%d is a prime number", number);
 
-        else
+            if (!sentinel)
+                System.out.printf("%d is a prime number", number);
+
+            else
 
             System.out.printf("%d is not a prime number", number);
 
     }
 }
+

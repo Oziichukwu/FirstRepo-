@@ -1,5 +1,6 @@
 package myersBriggs;
 
+import java.security.InvalidParameterException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -134,11 +135,27 @@ public class PersonalityExercise {
         questions = displayFirstSetOfPersonalityQuestions();
         Scanner input = new Scanner(System.in);
         userAnswer = new char[questions.length];
+        boolean correctInput = false;
         for (int i = 0; i < questions.length; i++) {
             System.out.println(questions[i]);
             System.out.println("Kindly choose the appropriate option: ");
-            char collectAnswers = input.next().charAt(0);
+            try {
+                char collectAnswers = input.next().charAt(0);
+                if(collectAnswers =='A'|| collectAnswers=='a' || collectAnswers == 'B' || collectAnswers=='b'){
                 userAnswer[i] = collectAnswers;
+                 correctInput = true;
+                }
+                else {
+                    correctInput = false;
+                    throw new InvalidParameterException("Answer is invalid");
+                }
+            }
+            catch (InvalidParameterException e){
+                System.out.println(e);
+            }
+            if(!correctInput){
+                i--;
+            }
         }
     }
     private static void displayTabulatedUsersResponses() {
@@ -186,27 +203,27 @@ public class PersonalityExercise {
         for (int i = 0; i < 4; i++) {
             countsForTheAs = 0;
             countsForTheBs = 0;
-            if (userAnswer[i] == 'a'){
+            if (userAnswer[i] == 'a' || userAnswer[i] == 'A'){
                 countsForTheAs++;
             }else {
                 countsForTheBs++;
             }
-            if(userAnswer[i+4] == 'a'){
+            if(userAnswer[i+4] == 'a' || userAnswer[i+4] == 'A'){
                 countsForTheAs++;
             }else{
                 countsForTheBs++;
             }
-            if(userAnswer[i+8] == 'a'){
+            if(userAnswer[i+8] == 'a' || userAnswer[i+8] == 'A'){
                 countsForTheAs++;
             }else{
                 countsForTheBs++;
             }
-            if (userAnswer[i+12] == 'a'){
+            if (userAnswer[i+12] == 'a' || userAnswer[i+12] == 'A'){
                 countsForTheAs++;
             }else{
                 countsForTheBs++;
             }
-            if(userAnswer[i+16] == 'a'){
+            if(userAnswer[i+16] == 'a' || userAnswer[i+16] == 'A'){
                 countsForTheAs++;
             }else{
                 countsForTheBs++;
@@ -240,7 +257,7 @@ public class PersonalityExercise {
                 if (countsForTheAs > countsForTheBs){
                         personalityTraits[i] = "Judging";
                     }else{
-                        personalityTraits[i] = "Perspective";
+                        personalityTraits[i] = "Perceiving";
                     }
                 }
             }
