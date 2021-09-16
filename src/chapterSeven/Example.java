@@ -1,6 +1,7 @@
 package chapterSeven;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Example {
     public static void main(String[] args) {
@@ -17,6 +18,20 @@ public class Example {
             }
         }
         System.out.println(Arrays.toString(point));
+        Scanner input = new Scanner(System.in);
+            int [][] matrix = new int[10][10];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = input.nextInt();
+            }
+        }
 
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = (int)(1+3*Math.random() * 100);
+            }
+        }
+        }
     }
-}
+
+
