@@ -153,14 +153,14 @@ public class PersonalityExercise {
             catch (InvalidParameterException e){
                 System.out.println(e);
             }
-            if(correctInput == false){
+            if(!correctInput){
                 i -=1;
             }
         }
     }
     private static void displayTabulatedUsersResponses() {
         String display = String.format("%6s%6s%6s", " ", "A", "B");
-        System.out.printf(display.repeat(4));
+        System.out.print(display.repeat(4));
         System.out.println();
         System.out.println("=".repeat(80));
     }
