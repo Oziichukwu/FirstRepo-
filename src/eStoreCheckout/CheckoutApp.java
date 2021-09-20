@@ -16,11 +16,10 @@ public class CheckoutApp {
     }
 
     private static String headerLine(){
-
         return
                 """
                           WELCOME TO UNCLE CHIBOB SHOPPING COMPLEX
-                    WE ARE HERE TO GIVE YOU A WONDERFUL SHOPPING EXPERIENCE
+                    WE ARE DELIGHTED TO GIVE YOU A WONDERFUL SHOPPING EXPERIENCE
                 """;
     }
 
@@ -28,11 +27,11 @@ public class CheckoutApp {
         Scanner input = new Scanner(System.in);
         String userInput = "yes";
         while (userInput.equals("yes")) {
-            System.out.println("Enter product name");
+            System.out.println("Enter product name:");
             String product = input.nextLine();
-            System.out.println("Enter price for each item");
+            System.out.println("Enter price for each item:");
             BigDecimal pricePerUnit = input.nextBigDecimal();
-            System.out.println("Enter the quantity");
+            System.out.println("Enter the quantity:");
             int quantity = input.nextInt();
 
             Items items = new Items(product, pricePerUnit, quantity);

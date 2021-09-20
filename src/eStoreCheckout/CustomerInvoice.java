@@ -13,10 +13,13 @@ public class CustomerInvoice {
         System.out.printf("%-4s%-15s%-15s%-10s%-10s%n", "S/N", "product", "pricePerUnit", "quantity", "Total");
         cart.getItemsInCart().forEach(items -> {
             System.out.printf("%-4d", count[0]);
-            System.out.println(cart.toString());
+            System.out.println(items.toString());
             count[0]++;
         });
-    }
+         System.out.println();
+         System.out.printf("Total Amount: %.2f%n", cart.calculateTotalOfItemsInCart());
+
+     }
     private static String displayHeaderOfCheckOutApplication(){
         return
                 """

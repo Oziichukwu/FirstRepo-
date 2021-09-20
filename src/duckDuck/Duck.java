@@ -24,3 +24,11 @@ public void setQuackableDuck(QuackableDuck qd){
     quackableDuck = qd;
 }
 }
+//
+//    public BigDecimal calculateVatOfTotalOfItems(){
+//       BigDecimal  VAT = BigDecimal.valueOf(7.5);
+//       BigDecimal  percent = BigDecimal.valueOf(100.00);
+//        return  calculateTotalOfItems().multiply(VAT).divide(percent);
+//    }
+
+// System.out.printf("The VAT on %.2f is: %.2f",cart.calculateTotalOfItems(), cart.calculateVatOfTotalOfItems());

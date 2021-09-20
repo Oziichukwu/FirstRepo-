@@ -16,6 +16,8 @@ public class CheckoutInvoice {
             count[0]++;
         } );
         System.out.printf("Total Amount: %.2f%n", cart.calculateTotalOfItems());
+        System.out.printf("The (7.5)VAT on %.2f is: %.2f",cart.calculateTotalOfItems(), cart.calculateVatOfTotalOfItems());
+
     }
         private static String displayHeaderOfCheckOutApplication(){
             return

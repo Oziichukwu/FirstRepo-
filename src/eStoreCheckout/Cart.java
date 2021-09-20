@@ -22,7 +22,7 @@ public class Cart {
        BigDecimal itemsTotal = BigDecimal.ZERO;
 
        for (Items items : collectionOfItems){
-           itemsTotal = itemsTotal.add(calculateTotalOfItemsInCart());
+           itemsTotal = itemsTotal.add(items.calculateTotalForItems());
        }
         return itemsTotal;
     }
