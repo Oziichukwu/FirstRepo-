@@ -33,7 +33,6 @@ public class ExceptionHandling {
             System.out.println("kindly renter a valid input");
             return input(prompt);
         }
-
     }
 
     private static void thisMethodMightCatchException(){
