@@ -11,6 +11,7 @@ public class CustomerInvoice {
         int[] count = {1};
         System.out.println(displayHeaderOfCheckOutApplication());
         System.out.printf("%-4s%-15s%-15s%-10s%-10s%n", "S/N", "product", "pricePerUnit", "quantity", "Total");
+         System.out.println("=".repeat(55));
         cart.getItemsInCart().forEach(items -> {
             System.out.printf("%-4d", count[0]);
             System.out.println(items.toString());
@@ -18,6 +19,8 @@ public class CustomerInvoice {
         });
          System.out.println();
          System.out.printf("Total Amount: %.2f%n", cart.calculateTotalOfItemsInCart());
+         System.out.printf("The (7.5)VAT on %.2f is: %.2f",cart.calculateTotalOfItemsInCart(), cart.calculateVatOfTotalOfItems());
+
 
      }
     private static String displayHeaderOfCheckOutApplication(){
