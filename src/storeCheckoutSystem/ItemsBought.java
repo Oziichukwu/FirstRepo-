@@ -20,5 +20,4 @@ public class ItemsBought {
     public BigDecimal calculateTotalPrice() {
         return pricePerUnit.multiply(BigDecimal.valueOf(quantityOfProduct));
     }
-
 }
