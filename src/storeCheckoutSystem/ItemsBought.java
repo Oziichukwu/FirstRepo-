@@ -12,16 +12,13 @@ public class ItemsBought {
         this.productName = productName;
     }
 
-    public BigDecimal getPricePerUnit(){
-        return pricePerUnit;
+    public String toString(){
+        return String.format("%-16s%-16.2f%-11d%-10.2f%n",productName, pricePerUnit, quantityOfProduct,
+               calculateTotalPrice( ));
     }
 
-    public int getQuantityOfProduct() {
-        return quantityOfProduct;
-    }
-    public String toString(){
-        return String.format("%-15s%-15.2f%-10d%-10.2f%n",productName, pricePerUnit, quantityOfProduct,
-                pricePerUnit.multiply(BigDecimal.valueOf(quantityOfProduct)));
+    public BigDecimal calculateTotalPrice() {
+        return pricePerUnit.multiply(BigDecimal.valueOf(quantityOfProduct));
     }
 
 }
