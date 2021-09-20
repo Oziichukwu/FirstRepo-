@@ -14,7 +14,7 @@ public class ItemsBought {
 
     public String toString(){
         return String.format("%-16s%-16.2f%-11d%-10.2f%n",productName, pricePerUnit, quantityOfProduct,
-               calculateTotalPrice( ));
+               calculateTotalPrice());
     }
 
     public BigDecimal calculateTotalPrice() {
