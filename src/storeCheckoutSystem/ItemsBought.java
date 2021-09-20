@@ -12,10 +12,6 @@ public class ItemsBought {
         this.productName = productName;
     }
 
-    public String getProductName(){
-        return productName;
-    }
-
     public BigDecimal getPricePerUnit(){
         return pricePerUnit;
     }
@@ -24,7 +20,7 @@ public class ItemsBought {
         return quantityOfProduct;
     }
     public String toString(){
-        return String.format("%13s%13.2f%10d%10.2f%n",productName, pricePerUnit, quantityOfProduct,
+        return String.format("%-15s%-15.2f%-10d%-10.2f%n",productName, pricePerUnit, quantityOfProduct,
                 pricePerUnit.multiply(BigDecimal.valueOf(quantityOfProduct)));
     }
 
