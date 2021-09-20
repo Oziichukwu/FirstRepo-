@@ -17,7 +17,7 @@ public class MinimumValueOperation {
         try {
             System.out.println("Enter first Number");
             return input.nextDouble();
-        } catch (InputMismatchException ep) {
+        }catch (InputMismatchException ep) {
             System.out.printf("Exception: %s%n", "invalid input, kindly reenter a valid input");
             return collectInput(prompt);
         }
@@ -45,8 +45,6 @@ public class MinimumValueOperation {
         }
 
     }
-
-
     private static double calculateMinimumValue(double firstNumber, double secondNumber,
                                              double thirdNumber){
         return Math.min(firstNumber, Math.min(secondNumber,thirdNumber));
