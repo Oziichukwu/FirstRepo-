@@ -21,7 +21,7 @@ public class CustomerInvoice {
         return
                 """
                               UNCLE CHIBOB SHOPPING PLAZA
-                        address: 5, Ademola illaro Street bush side 
+                        address: 5, Ademola ilaro Street bush side 
                         email: uncle.chibob@chibob.com 
                         phoneNo: 09087657876
                         motto: In God we trust
