@@ -12,18 +12,19 @@ public class CheckoutApp {
         System.out.println(headerLine());
         Cart cart = new Cart();
         customersCart(cart).displayCustomerInvoice();
-
+        CustomerInvoice customerInvoice = new CustomerInvoice(cart);
+        customerInvoice.collectPaymentFromCustomer();
     }
 
-    private static String headerLine(){
+    private static String headerLine() {
         return
                 """
-                          WELCOME TO UNCLE CHIBOB SHOPPING COMPLEX
-                    WE ARE DELIGHTED TO GIVE YOU A WONDERFUL SHOPPING EXPERIENCE
-                """;
+                                  WELCOME TO UNCLE CHIBOB SHOPPING COMPLEX
+                            WE ARE DELIGHTED TO GIVE YOU A WONDERFUL SHOPPING EXPERIENCE
+                        """;
     }
 
-    public static CustomerInvoice customersCart(Cart cart){
+    public static CustomerInvoice customersCart(Cart cart) {
         Scanner input = new Scanner(System.in);
         String userInput = "yes";
         while (userInput.equals("yes")) {
@@ -50,4 +51,5 @@ public class CheckoutApp {
         }
         return new CustomerInvoice(cart);
     }
+
 }
