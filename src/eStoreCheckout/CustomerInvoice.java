@@ -1,5 +1,8 @@
 package eStoreCheckout;
 
+import java.math.BigDecimal;
+import java.util.Scanner;
+
 public class CustomerInvoice {
     Cart cart;
 
@@ -19,8 +22,8 @@ public class CustomerInvoice {
         });
          System.out.println();
          System.out.printf("Total Amount: %.2f%n", cart.calculateTotalOfItemsInCart());
-         System.out.printf("The (7.5)VAT on %.2f is: %.2f",cart.calculateTotalOfItemsInCart(), cart.calculateVatOfTotalOfItems());
-
+         System.out.printf("The (7.5)VAT on %.2f is: %.2f%n", cart.calculateTotalOfItemsInCart(), cart.calculateVatOfTotalOfItems());
+         System.out.println();
 
      }
     private static String displayHeaderOfCheckOutApplication(){
@@ -33,4 +36,24 @@ public class CustomerInvoice {
                         motto: In God we trust
                 """;
     }
+    public void collectPaymentFromCustomer() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("KINDLY MAKE YOUR PAYMENT");
+        double amount = input.nextDouble();
+        if(amount > cart.calculateTotalOfItemsInCart().doubleValue()){
+         BigDecimal payment = BigDecimal.valueOf(amount).subtract(cart.calculateTotalOfItemsInCart());
+            System.out.printf("Balance : %.2f%n", payment);
+            System.out.println("Shay u want still collect change niiii");
+        }
+        if (amount < cart.calculateTotalOfItemsInCart().doubleValue()){
+            BigDecimal payment = cart.calculateTotalOfItemsInCart().subtract(BigDecimal.valueOf(amount));
+            System.out.printf("Outstanding debt: %.2f%n", payment);
+            System.out.println("Kindly pay up you gbesee");
+        }
+        else if ( amount == (cart.calculateTotalOfItemsInCart().doubleValue())){
+            System.out.println("Balance: 0.00");
+            System.out.println("Thanks for your patronage");
+        }
+      }
 }
+
