@@ -21,8 +21,10 @@ public class CustomerInvoice {
             count[0]++;
         });
          System.out.println();
+         System.out.println("=".repeat(60));
          System.out.printf("Total Amount: %.2f%n", cart.calculateTotalOfItemsInCart());
          System.out.printf("The (7.5)VAT on %.2f is: %.2f%n", cart.calculateTotalOfItemsInCart(), cart.calculateVatOfTotalOfItems());
+         System.out.println("=".repeat(60));
          System.out.println();
 
      }
@@ -39,6 +41,7 @@ public class CustomerInvoice {
     public void collectPaymentFromCustomer() {
         Scanner input = new Scanner(System.in);
         System.out.println("KINDLY MAKE YOUR PAYMENT");
+        System.out.print("ENTER AMOUNT: ");
         double amount = input.nextDouble();
         if(amount > cart.calculateTotalOfItemsInCart().doubleValue()){
          BigDecimal payment = BigDecimal.valueOf(amount).subtract(cart.calculateTotalOfItemsInCart());
@@ -49,10 +52,11 @@ public class CustomerInvoice {
             BigDecimal payment = cart.calculateTotalOfItemsInCart().subtract(BigDecimal.valueOf(amount));
             System.out.printf("Outstanding debt: %.2f%n", payment);
             System.out.println("Kindly pay up you gbesee");
-        }
-        else if ( amount == (cart.calculateTotalOfItemsInCart().doubleValue())){
+        } else if (amount == (cart.calculateTotalOfItemsInCart().doubleValue())) {
+            System.out.println("=".repeat(60));
             System.out.println("Balance: 0.00");
             System.out.println("Thanks for your patronage");
+            System.out.println("=".repeat(60));
         }
       }
 }
