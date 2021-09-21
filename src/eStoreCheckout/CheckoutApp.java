@@ -3,12 +3,13 @@ package eStoreCheckout;
 import storeCheckoutSystem.CheckoutInvoice;
 
 import java.math.BigDecimal;
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class CheckoutApp {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         System.out.println(headerLine());
         Cart cart = new Cart();
         customersCart(cart).displayCustomerInvoice();
@@ -27,6 +28,7 @@ public class CheckoutApp {
     public static CustomerInvoice customersCart(Cart cart) {
         Scanner input = new Scanner(System.in);
         String userInput = "yes";
+        try{
         while (userInput.equals("yes")) {
             System.out.println("Enter product name:");
             String product = input.nextLine();
@@ -38,6 +40,7 @@ public class CheckoutApp {
             Items items = new Items(product, pricePerUnit, quantity);
             cart.addItemsToCart(items);
 
+
             System.out.println();
             System.out.println(
                     """
@@ -48,6 +51,10 @@ public class CheckoutApp {
                             """);
             userInput = input.next().toLowerCase();
             input.nextLine();
+        }
+        }
+        catch (InputMismatchException inputMismatchException){
+            System.out.println("Exception: invalid input");
         }
         return new CustomerInvoice(cart);
     }
