@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Cart {
 
-    private final List<Items>collectionOfItems;
+    private final ArrayList<Items>collectionOfItems;
 
     public Cart() {
         collectionOfItems = new ArrayList<>();
@@ -32,9 +32,9 @@ public class Cart {
     }
 
     public BigDecimal calculateVatOfTotalOfItems(){
-        BigDecimal  VAT = BigDecimal.valueOf(7.5);
+        BigDecimal  valueAddedTax = BigDecimal.valueOf(7.5);
         BigDecimal  percent = BigDecimal.valueOf(100.00);
-        return  calculateTotalOfItemsInCart().multiply(VAT).divide(percent);
+        return  calculateTotalOfItemsInCart().multiply(valueAddedTax).divide(percent);
     }
 
 }
