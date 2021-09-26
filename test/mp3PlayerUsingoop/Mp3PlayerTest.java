@@ -56,7 +56,7 @@ public class Mp3PlayerTest {
     }
 
     @Test
-    @DisplayName("Mp3 can play music test")
+    @DisplayName("Mp3 player can play music test")
     public void mp3PlayerCanPlayMusicTest(){
 
         goodboyz.setOn(true);
@@ -68,5 +68,90 @@ public class Mp3PlayerTest {
 
     }
 
+    @Test
+    @DisplayName("Mp3 player can increase volume in 5% increment")
+    public void mp3PlayerCanIncreaseVolumeTest(){
+        goodboyz.setOn(true);
+        goodboyz.increaseVolumeBy5();
+        goodboyz.increaseVolumeBy5();
 
+        assertEquals(15,goodboyz.getVolume());
+    }
+    @Test
+    @DisplayName("Mp3 volume cannot be increased beyond 100% ")
+    public void mp3PlayerCannotIncreaseVolumeBeyond100Test(){
+        goodboyz.setOn(true);
+        for (int i = 1; i <= 21 ; i++) {
+            goodboyz.increaseVolumeBy5();
+        }
+        assertEquals(100, goodboyz.getVolume());
+    }
+    @Test
+    @DisplayName("Mp3 player can pause music test")
+    public void mp3PlayerCanPauseMusicTest(){
+
+        goodboyz.setOn(true);
+        assertSame(MusicState.STOP, goodboyz.getMusicState());
+
+        goodboyz.setMusicState(MusicState.PAUSE);
+
+        assertSame(MusicState.PAUSE,goodboyz.getMusicState());
+
+    }
+    @Test
+    @DisplayName("Mp3 player can decrease volume in 5% decrement")
+    public void mp3PlayerCanDecreaseMusicTest(){
+
+        goodboyz.setOn(true);
+        goodboyz.increaseVolumeBy5();
+        goodboyz.increaseVolumeBy5();
+        goodboyz.increaseVolumeBy5();
+
+        goodboyz.decreaseVolume();
+
+        assertEquals(15, goodboyz.getVolume());
+    }
+    @Test
+    @DisplayName("Mp3 player cannot be decreased beyond 5 % ")
+    public void mp3PlayerCannotBeDecreasedBeyondFivePercentTest(){
+
+        goodboyz.setOn(true);
+        goodboyz.increaseVolumeBy5();
+        goodboyz.increaseVolumeBy5();
+
+        for (int i = 1; i <= 4; i++) {
+            goodboyz.decreaseVolume();
+        }
+        assertEquals(5, goodboyz.getVolume());
+    }
+    @Test
+    @DisplayName("Mp3 player can play next music ")
+    public void mp3PlayerCanPlayNextMusicTest(){
+
+        goodboyz.setOn(true);
+        goodboyz.Mp3PlayerCanPlayNextMusic();
+        assertEquals(1,goodboyz.getNextMusic());
+    }
+
+    @Test
+    @DisplayName("Mp3 player can play previous music")
+    public void mp3PlayerCanPlayPreviousMusicTest(){
+
+        goodboyz.setOn(true);
+
+        goodboyz.Mp3PlayerCanPlayNextMusic();
+        goodboyz.Mp3PlayerCanPlayNextMusic();
+        goodboyz.Mp3PlayerCanPlayNextMusic();
+
+        goodboyz.playPreviousMusic();
+
+        assertEquals(2, goodboyz.getNextMusic());
+    }
+    @Test
+    @DisplayName("Mp3 player can play music at random")
+    public void mp3PlayerCanPlayMusicAtRandomTest(){
+
+        goodboyz.setOn(true);
+
+    }
 }
