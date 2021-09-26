@@ -42,17 +42,17 @@ public class CustomerInvoice {
         Scanner input = new Scanner(System.in);
         System.out.println("KINDLY MAKE YOUR PAYMENT");
         System.out.print("ENTER AMOUNT: ");
-        double amount = input.nextDouble();
-        if(amount > cart.calculateTotalOfItemsInCart().doubleValue()){
-         BigDecimal payment = BigDecimal.valueOf(amount).subtract(cart.calculateTotalOfItemsInCart());
-            System.out.printf("Balance : %.2f%n", payment);
+        double amountToPay = input.nextDouble();
+        if(amountToPay > cart.calculateTotalOfItemsInCart().doubleValue()){
+         BigDecimal paymentMadeByCustomer = BigDecimal.valueOf(amountToPay).subtract(cart.calculateTotalOfItemsInCart());
+            System.out.printf("Balance : %.2f%n", paymentMadeByCustomer);
             System.out.println("Shay u want still collect change niiii");
         }
-        if (amount < cart.calculateTotalOfItemsInCart().doubleValue()){
-            BigDecimal payment = cart.calculateTotalOfItemsInCart().subtract(BigDecimal.valueOf(amount));
+        if (amountToPay < cart.calculateTotalOfItemsInCart().doubleValue()){
+            BigDecimal payment = cart.calculateTotalOfItemsInCart().subtract(BigDecimal.valueOf(amountToPay));
             System.out.printf("Outstanding debt: %.2f%n", payment);
-            System.out.println("Kindly pay up you gbesee");
-        } else if (amount == (cart.calculateTotalOfItemsInCart().doubleValue())) {
+            System.out.println("Kindly pay up your gbesee");
+        } else if (amountToPay == (cart.calculateTotalOfItemsInCart().doubleValue())) {
             System.out.println("=".repeat(60));
             System.out.println("Balance: 0.00");
             System.out.println("Thanks for your patronage");
