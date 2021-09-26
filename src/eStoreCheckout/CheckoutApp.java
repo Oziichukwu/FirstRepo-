@@ -53,8 +53,8 @@ public class CheckoutApp {
             input.nextLine();
         }
         }
-        catch (InputMismatchException inputMismatchException){
-            System.out.println("Exception: invalid input");
+        catch (InputMismatchException ex){
+            System.out.println("Abeg write give yourself sense small");
         }
         return new CustomerInvoice(cart);
     }
