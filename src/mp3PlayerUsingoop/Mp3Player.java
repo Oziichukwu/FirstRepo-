@@ -10,6 +10,9 @@ public class Mp3Player {
 
     private boolean isOn;
 
+    private int volume = 5;
+    private int nextMusic;
+
     public Playlist getPlaylist() {
 
         return  playlist;
@@ -30,6 +33,33 @@ public class Mp3Player {
     }
     public MusicState getMusicState(){
         return musicState;
+    }
+
+    public void increaseVolumeBy5() {
+        if (volume < 100) {
+            volume = volume + 5;
+        }
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void decreaseVolume() {
+        if(volume > 5)
+        volume = volume - 5;
+    }
+
+    public void Mp3PlayerCanPlayNextMusic() {
+        nextMusic = nextMusic + 1;
+    }
+
+    public int getNextMusic() {
+        return nextMusic;
+    }
+
+    public void playPreviousMusic() {
+        nextMusic = nextMusic - 1;
     }
 
 //private final List<Playlist>playlistCollection;
