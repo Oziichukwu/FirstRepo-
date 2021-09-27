@@ -10,10 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Mp3PlayerTest {
     Mp3Player goodboyz;
     Playlist playlist;
+    private Music music;
+
     @BeforeEach
     public void setup(){
         goodboyz = new Mp3Player();
         playlist = goodboyz.getPlaylist();
+        music = new Music();
     }
     @AfterEach
     void teardown(){
@@ -153,5 +156,42 @@ public class Mp3PlayerTest {
 
         goodboyz.setOn(true);
 
+        goodboyz.setMusicState(MusicState.PLAY);
+
+        goodboyz.Mp3PlayerCanPlayNextMusic();
+        goodboyz.Mp3PlayerCanPlayNextMusic();
+
+        //goodboyz.playMusicAtRandom();
+
+        assertNotEquals(3, goodboyz.getNextMusic());
+
+    }
+    @Test
+    @DisplayName("Mp3 player can add music to playlist")
+    public void mp3PlayerCanAddMusicToPlaylistTest(){
+
+        goodboyz.setOn(true);
+
+        Playlist playlist = goodboyz.getPlaylist();
+
+        goodboyz.addMusicToPlaylist(music);
+        goodboyz.addMusicToPlaylist(music);
+
+        assertEquals(2, goodboyz.getSizeOfPlaylist());
+
+    }
+
+    @Test
+    @DisplayName("Mp3 player can remove music from playlist")
+    public void mp3PlayerCanRemoveMusicFromPlaylist(){
+
+        goodboyz.setOn(true);
+
+        goodboyz.addMusicToPlaylist(music);
+        goodboyz.addMusicToPlaylist(music);
+
+        goodboyz.removeMusicFromPlaylist(music);
+
+        assertEquals(1, goodboyz.getSizeOfPlaylist());
     }
 }
