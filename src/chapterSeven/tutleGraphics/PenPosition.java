@@ -1,2 +1,6 @@
-package chapterSeven.tutleGraphics;public enum PenPosition {
+package chapterSeven.tutleGraphics;
+
+public enum PenPosition {
+
+    UP, DOWN;
 }
