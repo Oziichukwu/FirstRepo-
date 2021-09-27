@@ -1,2 +1,5 @@
-package chapterSeven.tutleGraphics;public enum Direction {
+package chapterSeven.tutleGraphics;
+
+public enum Direction {
+    EAST,SOUTH, WEST, NORTH;
 }
