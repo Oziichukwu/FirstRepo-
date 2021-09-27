@@ -1,14 +1,24 @@
 package mp3PlayerUsingoop;
 
-import java.util.List;
+import java.security.SecureRandom;
+import java.util.ArrayList;
 
 public class Mp3Player {
+
+private static ArrayList<Music> playlistCollection;
+
+//    public Mp3Player() {
+//        playlistCollection = new ArrayList<Music>();
+//    }
+    SecureRandom randomNumber = new SecureRandom();
 
     private MusicState musicState = MusicState.STOP;
 
     private Playlist playlist = new Playlist();
 
     private boolean isOn;
+
+    private int shuffleMusic;
 
     private int volume = 5;
     private int nextMusic;
@@ -62,10 +72,22 @@ public class Mp3Player {
         nextMusic = nextMusic - 1;
     }
 
-//private final List<Playlist>playlistCollection;
-//
-//    public Mp3Player(List<Playlist> playlistCollection) {
-//        this.playlistCollection = playlistCollection;
-//
-//    }
+
+    public int playMusicAtRandom(SecureRandom randomNumber) {
+
+           return  0;
+    }
+
+    public void addMusicToPlaylist(Music music) {
+           playlistCollection.add(music);
+    }
+
+    public int getSizeOfPlaylist() {
+
+        return playlistCollection.size();
+    }
+
+    public void removeMusicFromPlaylist(Music music) {
+        playlistCollection.remove(music);
+    }
 }
