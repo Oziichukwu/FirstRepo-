@@ -19,7 +19,7 @@ public class SketchPad {
                     System.out.print("# ");
                 }
                 if (column == 0){
-                    System.out.print("00");
+                    System.out.print("  ");
                 }
             }
             System.out.println();
