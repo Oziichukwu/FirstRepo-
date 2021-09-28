@@ -191,7 +191,7 @@ public class TurtleTest {
 
         myTurtle.moveForward(5);
 
-        assertEquals(new Position(0,4), myTurtle.getCurrentPosition());
+        assertEquals(new Position(0,-4), myTurtle.getCurrentPosition());
     }
 
 
@@ -209,7 +209,7 @@ public class TurtleTest {
 
         myTurtle.moveForward(5);
 
-        assertEquals(new Position(4,0), myTurtle.getCurrentPosition());
+        assertEquals(new Position(-4,0), myTurtle.getCurrentPosition());
     }
 
 
@@ -231,78 +231,161 @@ public class TurtleTest {
         assertEquals(0, sketchPad.getFloor()[0][3]);
         assertEquals(new Position(0,2), myTurtle.getCurrentPosition());
 
-        sketchPad.displayFloor();
+        //sketchPad.displayFloor();
     }
+
+
+    @Test
+    @DisplayName("Turtle can move on sketch pad test")
+    public void turtleCanMoveOnSketchPadWhenFacingSouthFromStartTest(){
+        myTurtle.penDown();
+        myTurtle.turnRight();
+        assertSame(Direction.SOUTH, myTurtle.getCurrentDirection());
+        SketchPad sketchPad = new SketchPad(5,5);
+
+        myTurtle.writeOn(sketchPad, 3);
+        int [][] floor = sketchPad.getFloor();
+
+        // assert
+        for (int i = 0; i < 3; i++) {
+            assertEquals(1, floor[i][0]);
+        }
+        assertEquals(0, sketchPad.getFloor()[3][0]);
+        assertEquals(new Position(2,0), myTurtle.getCurrentPosition());
+
+        //sketchPad.displayFloor();
+    }
+// this method needs working on
+    @Test
+    @DisplayName("Turtle can move on sketch pad test")
+    public void turtleCanMoveOnSketchPadWhenFacingNorthFromStartTest() {
+        SketchPad sketchPad = new SketchPad(5, 5);
+        myTurtle.penUP();
+        myTurtle.turnRight();
+        myTurtle.writeOn(sketchPad, 3);
+        assertSame(Direction.SOUTH, myTurtle.getCurrentDirection());
+
+        int[][] floor = sketchPad.getFloor();
+        for (int i = 0; i < 3; i++) {
+            assertEquals(0, floor[i][0]);
+        }
+        assertEquals(new Position(2, 0), myTurtle.getCurrentPosition());
+
+        myTurtle.turnRight();
+        myTurtle.turnRight();
+        assertSame(Direction.NORTH, myTurtle.getCurrentDirection());
+        myTurtle.penDown();
+        myTurtle.writeOn(sketchPad, 3);
+
+        for (int i = 0; i < 3; i++) {
+            assertEquals(1, floor[i][0]);
+        }
+        assertEquals(0, sketchPad.getFloor()[3][0]);
+
+        assertEquals(new Position(0, 0), myTurtle.getCurrentPosition());
+
+    }
+
 
     @Test
     @DisplayName("Turtle can move on sketch pad test")
     public void turtleCanMoveOnSketchPadWhenFacingSouthTest(){
-        assertSame(Direction.EAST,myTurtle.getCurrentDirection());
-        myTurtle.turnRight();
-        myTurtle.penDown();
-        assertSame(Direction.SOUTH, myTurtle.getCurrentDirection());
         SketchPad sketchPad = new SketchPad(5,5);
+        myTurtle.penDown();
+        myTurtle.writeOn(sketchPad,3);
 
+        // when
+        myTurtle.turnRight();
+        assertSame(Direction.SOUTH, myTurtle.getCurrentDirection());
         myTurtle.writeOn(sketchPad,3);
 
         //assert
         int [][] floor = sketchPad.getFloor();
-        assertEquals(1, floor[0][0]);
-        assertEquals(1, floor[1][0]);
-        assertEquals(1, floor[2][0]);
-        assertEquals(0, sketchPad.getFloor()[3][0]);
-        assertEquals(new Position(2,0), myTurtle.getCurrentPosition());
+        assertEquals(1, floor[0][2]);
+        assertEquals(1, floor[1][2]);
+        assertEquals(1, floor[2][2]);
+        assertEquals(0, sketchPad.getFloor()[3][2]);
+        assertEquals(new Position(2,2), myTurtle.getCurrentPosition());
 
-        sketchPad.displayFloor();
+        //sketchPad.displayFloor();
 
     }
     @Test
     @DisplayName("Turtle can move on sketch pad test")
     public void turtleCanMoveOnSketchPadWhenFacingWestTest(){
-        //assertSame(Direction.SOUTH, myTurtle.getCurrentDirection());
-
-        myTurtle.turnRight();
-        myTurtle.turnRight();
-
-        myTurtle.penDown();
-        assertSame(Direction.WEST, myTurtle.getCurrentDirection());
         SketchPad sketchPad = new SketchPad(5,5);
+        myTurtle.penDown();
+        myTurtle.writeOn(sketchPad,3);
 
+        myTurtle.turnRight();
+        myTurtle.writeOn(sketchPad,3);
+
+        //when
+        myTurtle.turnRight();
+        assertSame(Direction.WEST, myTurtle.getCurrentDirection());
         myTurtle.writeOn(sketchPad,3);
 
         //assert
         int [][] floor = sketchPad.getFloor();
-        assertEquals(1, floor[0][0]);
-        assertEquals(1, floor[0][1]);
-        assertEquals(1, floor[0][2]);
-        assertEquals(0, sketchPad.getFloor()[0][3]);
-        assertEquals(new Position(0,2), myTurtle.getCurrentPosition());
+        assertEquals(1, floor[2][0]);
+        assertEquals(1, floor[2][1]);
+        assertEquals(1, floor[2][2]);
+        //assertEquals(0, sketchPad.getFloor()[2][3]);
+        assertEquals(new Position(2,0), myTurtle.getCurrentPosition());
 
-        sketchPad.displayFloor();
+        //sketchPad.displayFloor();
     }
 
 
     @Test
     @DisplayName("Turtle can move on sketch pad test")
     public void turtleCanMoveOnSketchPadWhenFacingNorthTest() {
+        SketchPad sketchPad = new SketchPad(5,5);
+
         myTurtle.penDown();
+        myTurtle.writeOn(sketchPad,3);
+
         myTurtle.turnRight();
+        myTurtle.writeOn(sketchPad,3);
+
+
         myTurtle.turnRight();
+        myTurtle.writeOn(sketchPad,3);
+
+        // when
         myTurtle.turnRight();
         assertSame(Direction.NORTH, myTurtle.getCurrentDirection());
-        SketchPad sketchPad = new SketchPad(5, 5);
-
-        myTurtle.writeOn(sketchPad, 3);
+        myTurtle.writeOn(sketchPad,3);
 
         //assert
         int[][] floor = sketchPad.getFloor();
         assertEquals(1, floor[0][0]);
         assertEquals(1, floor[1][0]);
         assertEquals(1, floor[2][0]);
-        assertEquals(0, sketchPad.getFloor()[3][0]);
-        assertEquals(new Position(2, 0), myTurtle.getCurrentPosition());
+        //assertEquals(0, sketchPad.getFloor()[3][0]);
+        assertEquals(new Position(0, 0), myTurtle.getCurrentPosition());
+
+        //sketchPad.displayFloor();
+
+    }
+
+    @Test
+    @DisplayName("Turtle can display on sketchPad test")
+    public void turtleCanDisplayOnSketchPadTest(){
+
+        SketchPad sketchPad = new SketchPad(10,10);
+        myTurtle.penDown();
+        myTurtle.writeOn(sketchPad,5);
+
+        myTurtle.turnRight();
+        myTurtle.writeOn(sketchPad,5);
+
+        myTurtle.turnRight();
+        myTurtle.writeOn(sketchPad,5);
+
+        myTurtle.turnRight();
+        myTurtle.writeOn(sketchPad,5);
 
         sketchPad.displayFloor();
-
     }
 }
