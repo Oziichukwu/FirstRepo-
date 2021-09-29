@@ -4,6 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -15,7 +18,7 @@ public class Mp3PlayerTest {
     @BeforeEach
     public void setup(){
         goodboyz = new Mp3Player();
-        playlist = goodboyz.getPlaylist();
+        playlist = new Playlist();
         music = new Music();
     }
     @AfterEach
@@ -25,9 +28,6 @@ public class Mp3PlayerTest {
     @Test
     @DisplayName("Mp3 player can turn on Test")
     public void Mp3PlayerCanTurnOnTest(){
-
-        Mp3Player goodboyz = new Mp3Player();
-
         goodboyz.setOn(true);
 
         assertTrue(goodboyz.getIsOn());
@@ -47,15 +47,15 @@ public class Mp3PlayerTest {
     @DisplayName("Mp3 player has a play list test")
     public void mp3PlayerHasAPlaylistTest(){
 
-        Playlist playlist = goodboyz.getPlaylist();
+        ArrayList<Playlist> playlist = goodboyz.getPlaylist();
         assertNotNull(playlist);
     }
 
     @Test
     @DisplayName("Mp3 is stopped by default")
     public void mp3IsStoppedByDefaultTest(){
-
-        assertSame(MusicState.STOP, goodboyz.getMusicState());
+        goodboyz.setOn(true);
+        assertSame(MusicState.STOP, playlist.getMusicState());
     }
 
     @Test
@@ -63,11 +63,11 @@ public class Mp3PlayerTest {
     public void mp3PlayerCanPlayMusicTest(){
 
         goodboyz.setOn(true);
-       assertSame(MusicState.STOP, goodboyz.getMusicState());
+       assertSame(MusicState.STOP, playlist.getMusicState());
 
-       goodboyz.setMusicState(MusicState.PLAY);
+       playlist.setMusicState(MusicState.PLAY);
 
-       assertSame(MusicState.PLAY,goodboyz.getMusicState());
+       assertSame(MusicState.PLAY,playlist.getMusicState());
 
     }
 
@@ -75,66 +75,74 @@ public class Mp3PlayerTest {
     @DisplayName("Mp3 player can increase volume in 5% increment")
     public void mp3PlayerCanIncreaseVolumeTest(){
         goodboyz.setOn(true);
-        goodboyz.increaseVolumeBy5();
-        goodboyz.increaseVolumeBy5();
+        playlist.increaseVolumeBy5();
+        playlist.increaseVolumeBy5();
 
-        assertEquals(15,goodboyz.getVolume());
+        assertEquals(15,playlist.getVolume());
     }
+
     @Test
     @DisplayName("Mp3 volume cannot be increased beyond 100% ")
     public void mp3PlayerCannotIncreaseVolumeBeyond100Test(){
         goodboyz.setOn(true);
         for (int i = 1; i <= 21 ; i++) {
-            goodboyz.increaseVolumeBy5();
+            playlist.increaseVolumeBy5();
         }
-        assertEquals(100, goodboyz.getVolume());
+        assertEquals(100, playlist.getVolume());
     }
+
     @Test
     @DisplayName("Mp3 player can pause music test")
     public void mp3PlayerCanPauseMusicTest(){
 
         goodboyz.setOn(true);
-        assertSame(MusicState.STOP, goodboyz.getMusicState());
+        assertSame(MusicState.STOP, playlist.getMusicState());
 
-        goodboyz.setMusicState(MusicState.PAUSE);
+        playlist.setMusicState(MusicState.PAUSE);
 
-        assertSame(MusicState.PAUSE,goodboyz.getMusicState());
+        assertSame(MusicState.PAUSE,playlist.getMusicState());
 
     }
+
     @Test
     @DisplayName("Mp3 player can decrease volume in 5% decrement")
     public void mp3PlayerCanDecreaseMusicTest(){
 
         goodboyz.setOn(true);
-        goodboyz.increaseVolumeBy5();
-        goodboyz.increaseVolumeBy5();
-        goodboyz.increaseVolumeBy5();
+        playlist.increaseVolumeBy5();
+        playlist.increaseVolumeBy5();
+        playlist.increaseVolumeBy5();
 
-        goodboyz.decreaseVolume();
+        playlist.decreaseVolume();
 
-        assertEquals(15, goodboyz.getVolume());
+        assertEquals(15, playlist.getVolume());
     }
+
+
     @Test
     @DisplayName("Mp3 player cannot be decreased beyond 5 % ")
     public void mp3PlayerCannotBeDecreasedBeyondFivePercentTest(){
 
         goodboyz.setOn(true);
-        goodboyz.increaseVolumeBy5();
-        goodboyz.increaseVolumeBy5();
+        playlist.increaseVolumeBy5();
+        playlist.increaseVolumeBy5();
 
         for (int i = 1; i <= 4; i++) {
-            goodboyz.decreaseVolume();
+            playlist.decreaseVolume();
         }
-        assertEquals(5, goodboyz.getVolume());
+        assertEquals(5, playlist.getVolume());
     }
+
+
     @Test
     @DisplayName("Mp3 player can play next music ")
     public void mp3PlayerCanPlayNextMusicTest(){
 
         goodboyz.setOn(true);
-        goodboyz.Mp3PlayerCanPlayNextMusic();
-        assertEquals(1,goodboyz.getNextMusic());
+        playlist.Mp3PlayerCanPlayNextMusic();
+        assertEquals(1,playlist.getNextMusic());
     }
+
 
     @Test
     @DisplayName("Mp3 player can play previous music")
@@ -142,42 +150,44 @@ public class Mp3PlayerTest {
 
         goodboyz.setOn(true);
 
-        goodboyz.Mp3PlayerCanPlayNextMusic();
-        goodboyz.Mp3PlayerCanPlayNextMusic();
-        goodboyz.Mp3PlayerCanPlayNextMusic();
+        playlist.Mp3PlayerCanPlayNextMusic();
+        playlist.Mp3PlayerCanPlayNextMusic();
+        playlist.Mp3PlayerCanPlayNextMusic();
 
-        goodboyz.playPreviousMusic();
+        playlist.playPreviousMusic();
 
-        assertEquals(2, goodboyz.getNextMusic());
+        assertEquals(2, playlist.getNextMusic());
     }
-    @Test
-    @DisplayName("Mp3 player can play music at random")
-    public void mp3PlayerCanPlayMusicAtRandomTest(){
 
-        goodboyz.setOn(true);
+//    @Test
+//    @DisplayName("Mp3 player can play music at random")
+//    public void mp3PlayerCanPlayMusicAtRandomTest(){
+//
+//        goodboyz.setOn(true);
+//
+//        goodboyz.setMusicState(MusicState.PLAY);
+//
+//        goodboyz.Mp3PlayerCanPlayNextMusic();
+//        goodboyz.Mp3PlayerCanPlayNextMusic();
+//
+//        //goodboyz.playMusicAtRandom();
+//
+//        assertNotEquals(3, goodboyz.getNextMusic());
+//
+//    }
 
-        goodboyz.setMusicState(MusicState.PLAY);
-
-        goodboyz.Mp3PlayerCanPlayNextMusic();
-        goodboyz.Mp3PlayerCanPlayNextMusic();
-
-        //goodboyz.playMusicAtRandom();
-
-        assertNotEquals(3, goodboyz.getNextMusic());
-
-    }
     @Test
     @DisplayName("Mp3 player can add music to playlist")
     public void mp3PlayerCanAddMusicToPlaylistTest(){
 
         goodboyz.setOn(true);
 
-        Playlist playlist = goodboyz.getPlaylist();
+        //ArrayList<Playlist> playlist = goodboyz.getPlaylist();
 
-        goodboyz.addMusicToPlaylist(music);
-        goodboyz.addMusicToPlaylist(music);
+        playlist.addMusicToPlaylist(music);
+        playlist.addMusicToPlaylist(music);
 
-        assertEquals(2, goodboyz.getSizeOfPlaylist());
+        assertEquals(2, playlist.getSizeOfPlaylist());
 
     }
 
@@ -187,11 +197,28 @@ public class Mp3PlayerTest {
 
         goodboyz.setOn(true);
 
-        goodboyz.addMusicToPlaylist(music);
-        goodboyz.addMusicToPlaylist(music);
+        playlist.addMusicToPlaylist(music);
+        playlist.addMusicToPlaylist(music);
 
-        goodboyz.removeMusicFromPlaylist(music);
+        playlist.removeMusicFromPlaylist(music);
 
-        assertEquals(1, goodboyz.getSizeOfPlaylist());
+        assertEquals(1, playlist.getSizeOfPlaylist());
+
+    }
+
+    @Test
+    @DisplayName("Mp3 player cannot perform any function when turned off")
+    public void mp3PlayerCannotPerformAnyFunctionWhenTurnedOffTest(){
+
+        goodboyz.setOn(true);
+
+        // when
+        goodboyz.setOn(false);
+        // assert that
+        assertEquals(0, playlist.getSizeOfPlaylist());
+        assertEquals(0, playlist.getSizeOfPlaylist());
+        assertEquals(0, playlist.getNextMusic());
+        assertEquals(5, playlist.getVolume());
+        assertSame(MusicState.STOP,playlist.getMusicState());
     }
 }
