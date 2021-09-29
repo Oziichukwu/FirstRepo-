@@ -10,14 +10,6 @@ public class Position {
                 this.columnPosition = columnPosition;
                 this.rowPosition = rowPosition;
     }
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Position position = (Position) o;
-//        return rowPosition == position.rowPosition && columnPosition == position.columnPosition;
-//    }
-
 
     @Override
     public String toString() {
@@ -50,7 +42,7 @@ public class Position {
         }
         boolean rowsAreEqual = rowPosition == positionToBeCompared.rowPosition;
         boolean columnsAreEqual = columnPosition == positionToBeCompared.columnPosition;
-        return rowsAreEqual && columnsAreEqual;
+        return rowsAreEqual & columnsAreEqual;
     }
 
     public int getColumnPosition() {
