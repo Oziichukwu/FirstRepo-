@@ -1,6 +1,6 @@
 package eStoreCheckout;
 
-import storeCheckoutSystem.CheckoutInvoice;
+
 
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
