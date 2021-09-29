@@ -10,9 +10,8 @@ public class LinearSearch{
             if (list[i] == 5){
                 System.out.println("number found at index: "+(i));
             }
-//            else
-//                System.out.println( (i+1)  + "not found");
+            else
+                System.out.println("not found");
         }
     }
-
 }
