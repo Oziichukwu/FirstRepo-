@@ -15,7 +15,7 @@ public class SevenSegmentDisplay {
     public static void setScreen() {
 
         userArray = new int[8];
-        //Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         boolean correctInput = false;
         for (int i = 0; i < userArray.length; i++) {
 
