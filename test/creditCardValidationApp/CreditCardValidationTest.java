@@ -19,18 +19,23 @@ class CreditCardValidationTest {
     }
 
     @Test
+    @DisplayName("prefix is valid when credit card number begins with 4")
     public void validPrefixWhenCreditCardNumberStartsWith4Test(){
         assertTrue(creditCard.validPrefix("4388576018402626"));
     }
     @Test
+    @DisplayName("prefix is valid when credit card number begins with 5")
     public void ValidWhenCreditCardNumberStartsWith5Test(){
         assertTrue(creditCard.validPrefix("5388576018402626"));
     }
+
     @Test
+    @DisplayName("prefix is valid when credit card number begins with 37")
     public void validPrefixWhenCreditCardNumberStartsWith37Test(){
         assertTrue(creditCard.validPrefix("3788576018402626"));
     }
     @Test
+    @DisplayName("prefix is valid when credit card number begins with 6")
     public void validPrefixWhenCreditCardNumberStartsWith6Test(){
         assertTrue(creditCard.validPrefix("6788576018402626"));
     }
@@ -90,25 +95,37 @@ class CreditCardValidationTest {
         assertEquals(37, creditCard.sumOfDoubleEvenPlace("4388578402687"));
     }
     @Test
-    @DisplayName("credit card can double all odd placed numbers from right to left when the length is valid")
+    @DisplayName("credit card can sum all odd placed numbers from right to left when the length is valid")
     public void creditCardCanDoubleAllOddPlacedNumbersTest(){
-        assertEquals(33, creditCard.sumOfDoubleOddPlace("4388576018402687"));
+        assertEquals(39, creditCard.sumOfDoubleOddPlace("4388576018402687"));
     }
     @Test
-    @DisplayName("credit card can double all odd placed numbers from right to left when the length is valid")
+    @DisplayName("credit card can sum all odd placed numbers from right to left when the length is valid")
     public void creditCardCanDoubleAllOddPlacedNumbersWhenCardHasALengthOf15Test(){
-        assertEquals(37, creditCard.sumOfDoubleOddPlace("438857601842687"));
+        assertEquals(41, creditCard.sumOfDoubleOddPlace("438857601842687"));
     }
     @Test
-    @DisplayName("credit card can double all odd placed numbers from right to left when the length is valid")
+    @DisplayName("credit card can sum all odd placed numbers from right to left when the length is valid")
     public void creditCardCanDoubleAllOddPlacedNumbersWhenCardHasALengthOf14Test(){
-        assertEquals(38, creditCard.sumOfDoubleOddPlace("4388761842687"));
+        assertEquals(37, creditCard.sumOfDoubleOddPlace("4388761842687"));
     }
     @Test
-    @DisplayName("credit card can double all odd placed numbers from right to left when the length is valid")
+    @DisplayName("credit card can sum all odd placed numbers from right to left when the length is valid")
     public void creditCardCanDoubleAllOddPlacedNumbersWhenCardHasALengthOf13Test(){
-        assertEquals(34, creditCard.sumOfDoubleOddPlace("438857842687"));
+        assertEquals(35, creditCard.sumOfDoubleOddPlace("438857842687"));
     }
-
-
+    @Test
+    @DisplayName("credit card number is valid ")
+    public void creditCardNumberIsValidTest(){
+       int sumOfDoubleEvenPlaceValues= creditCard.sumOfDoubleEvenPlace("4388576018410707");
+        int sumOfDoubleOddPlaceValues= creditCard.sumOfDoubleOddPlace("4388576018410707");
+        assertTrue(creditCard.isValid(sumOfDoubleEvenPlaceValues, sumOfDoubleOddPlaceValues));
+    }
+    @Test
+    @DisplayName("credit card number is inValid ")
+    public void creditCardNumberIsInvalidTest(){
+        int sumOfDoubleEvenPlaceValues= creditCard.sumOfDoubleEvenPlace("4388576018402626");
+        int sumOfDoubleOddPlaceValues= creditCard.sumOfDoubleOddPlace("4388576018402626");
+        assertFalse(creditCard.isValid(sumOfDoubleEvenPlaceValues, sumOfDoubleOddPlaceValues));
+    }
 }
