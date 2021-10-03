@@ -13,6 +13,7 @@ public class Animal {
     public String getName(){
         return name;
     }
+
     public void setWeight(int newWeight){
         if(weight > 0) {
             weight = newWeight;
