@@ -1,2 +1,9 @@
-package designPartterns.strategyPattern;public class Cat {
+package designPartterns.strategyPattern;
+
+public class Cat extends Animal{
+
+    public Cat(){
+        super();
+        setSound ("Meow");
+    }
 }
