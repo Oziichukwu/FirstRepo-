@@ -1,2 +1,5 @@
-package designPartterns.strategyPattern;public class Bird {
+package designPartterns.strategyPattern;
+
+public class Bird {
+
 }
