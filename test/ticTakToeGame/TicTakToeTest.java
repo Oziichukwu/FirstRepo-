@@ -33,11 +33,53 @@ public class TicTakToeTest {
 
         TicTacToe tikky = new TicTacToe();
         tikky.setPlayer1(BoardPosition.X);
-        tikky.setPlayer2(BoardPosition.O);
-        tikky.player1move();
+       // tikky.setPlayer2(BoardPosition.O);
+        tikky.player1move(5);
         assertArrayEquals(new char[][]{{'#', '#', '#'}, {'#', 'X', '#'}, {'#', '#', '#'}}, tikky.getBoard());
+    }
+
+    @Test
+    void player2CanMoveTest(){
+
+        TicTacToe tikky = new TicTacToe();
+        tikky.setPlayer1(BoardPosition.X);
+        tikky.setPlayer2(BoardPosition.O);
+        tikky.player1move(5);
+        tikky.player2move(6);
+        assertArrayEquals(new char[][]{{'#', '#', '#'}, {'#', 'X', 'O'}, {'#', '#', '#'}}, tikky.getBoard());
+    }
 
 
+    @Test
+    void player1AndPlayerTwoCanMoveTest(){
+
+        TicTacToe tikky = new TicTacToe();
+        tikky.setPlayer1(BoardPosition.X);
+        tikky.setPlayer2(BoardPosition.O);
+        tikky.player1move(5);
+        tikky.player2move(6);
+        tikky.player1move(1);
+
+        assertArrayEquals(new char[][]{{'X', '#', '#'}, {'#', 'X', 'O'}, {'#', '#', '#'}}, tikky.getBoard());
+    }
+
+    @Test
+    void player1AndPlayerTwoCanMoveManyTest(){
+
+        TicTacToe tikky = new TicTacToe();
+        tikky.setPlayer1(BoardPosition.X);
+        tikky.setPlayer2(BoardPosition.O);
+        tikky.player1move(5);
+        tikky.player2move(6);
+        tikky.player1move(1);
+        tikky.player2move(4);
+        tikky.player1move(3);
+        tikky.player2move(2);
+        tikky.player1move(7);
+        tikky.player2move(9);
+        tikky.player1move(8);
+
+        assertArrayEquals(new char[][]{{'X', 'O', 'X'}, {'O', 'X', 'O'}, {'X', 'X', 'O'}}, tikky.getBoard());
     }
 
 }
