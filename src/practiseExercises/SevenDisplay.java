@@ -14,7 +14,6 @@ public class SevenDisplay {
     public int[][] getScreen() {
 
         return screen;
-
     }
 
     public void writeOnA() {
