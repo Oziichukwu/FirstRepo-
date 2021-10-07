@@ -3,6 +3,7 @@ package chapterSeven.tutleGraphics;
 public class SketchPad {
     int [][]floor;
     public SketchPad(int floorRow, int floorColumn) {
+
         floor = new int [floorRow][floorColumn];
     }
 
