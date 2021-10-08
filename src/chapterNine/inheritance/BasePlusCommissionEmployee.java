@@ -2,7 +2,6 @@ package chapterNine.inheritance;
 
 public class BasePlusCommissionEmployee extends CommissionEmployee {
 
-
     private double baseSalary;
 
     public BasePlusCommissionEmployee(String firstName, String lastName, String socialSecurityNumber,
@@ -23,6 +22,7 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
     public void setBaseSalary(double baseSalary) {
         this.baseSalary = baseSalary;
     }
+
     @Override
     public double earnings(){
 
@@ -35,3 +35,4 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
         return String.format("%s %s%n%s: %.2f", "base-salaried", super.toString(), "base salary", getBaseSalary());
     }
 }
+
