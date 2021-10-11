@@ -84,4 +84,15 @@ public class MyArrayListTest {
 
     }
 
+    @Test
+    public void removeAndRearrangeIndexTest(){
+
+        myArrayList.add(34);
+        myArrayList.add(32);
+        myArrayList.add(99);
+        assertEquals(32, myArrayList.get(1));
+        myArrayList.remove(32);
+        assertEquals(99, myArrayList.get(1));
+    }
+
 }
