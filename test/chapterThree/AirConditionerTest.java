@@ -1,4 +1,6 @@
- import chapterThree11.AirConditioner;
+package chapterThree;
+
+import chapterThree11.AirConditioner;
  import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
