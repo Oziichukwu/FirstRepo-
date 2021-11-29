@@ -27,8 +27,7 @@ public class CommissionEmployee {
     }
 
     public void setGrossSales(double grossSales) {
-        if (grossSales < 0.0)
-            throw new IllegalArgumentException("gross sale must not be less than 0.0");
+        if (grossSales < 0.0) throw new IllegalArgumentException("gross sale must not be less than 0.0");
         this.grossSales = grossSales;
     }
 
