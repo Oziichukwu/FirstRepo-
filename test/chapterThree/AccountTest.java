@@ -95,7 +95,6 @@ public class AccountTest {
         int goodnewsBalance = goodnewsAccount.getBalance();
         assertEquals(20000, goodnewsBalance);
 
-
-
     }
+
 }

@@ -1,2 +1,7 @@
-package someWork;public class Square {
+package someWork;
+
+public class Square {
+    public static void main(String[] args) {
+
+    }
 }
